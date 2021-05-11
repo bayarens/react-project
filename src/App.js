@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import { lambo, dodge, ferrari, boat1, boat2, boat3 } from './imageData';
-import Header from './Header';
-import Card from './Card';
+import { ourData } from './fakeApi';
+import Header from './Components/Header';
+import Card from './Components/Card';
+import Greeting from './Components/Greeting';
 
 
 
@@ -12,8 +13,8 @@ class App extends React.Component {
 
     this.state = {
       selected: 'cars',
-      cars: [lambo, dodge, ferrari],
-      boats: [boat1, boat2, boat3]
+      cars: ourData.cars,
+      boats: ourData.boats
     }
   }
   
@@ -35,7 +36,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
-        <h1>My Photo-bucket App!</h1>
+        <Greeting />
         <Header handleClick = {this.handleClick}/>
         <section className="photos-container">
           {this.createCards()}
