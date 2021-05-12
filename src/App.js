@@ -46,6 +46,9 @@ class App extends React.Component {
 
   getCars = async () => {
     const response = await carList();
+    const carArray = response.map(car => {
+      return car.urls.small
+    });
     this.setState({
       cars: response
     })
