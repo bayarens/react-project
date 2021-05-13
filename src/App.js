@@ -4,7 +4,7 @@ import { ourData } from './fakeApi';
 import Header from './Components/Header';
 import Card from './Components/Card';
 import Greeting from './Components/Greeting';
-import { randomPhoto, carList } from './unsplashRequests';
+import { randomPhoto, carList, boatList } from './unsplashRequests';
 
 
 
@@ -48,15 +48,26 @@ class App extends React.Component {
     const response = await carList();
     const carArray = response.map(car => car.urls.small);
     this.setState({
-      cars: carArray
-    })
+      cars: carArray,
+      selected: 'cars'
+    });
   }
+
+  getBoats = async () => {
+    const response = await boatList();
+    const boatArray = response.map(boat => boat.urls.small);
+    console.log(boatArray)
+    this.setState({
+      boats: boatArray,
+      selected: 'boats'
+    });
+  }
+
 
   render() {
     return (
       <div className="App">
         <Greeting />
-        <button onClick={this.getCars}>Testing request</button>
         <div>
           <h3>random photo description</h3>
           <div>
@@ -64,7 +75,7 @@ class App extends React.Component {
             <img src={this.state.randomImg} />
           </div>
         </div>
-        <Header handleClick={this.handleClick} />
+        <Header getCars={this.getCars} getBoats={this.getBoats} />
         <section className="photos-container">
           {this.createCards()}
         </section>

@@ -6,8 +6,8 @@ class Header extends React.Component {
     render() {
         return (
             <header className="header">
-                <Button handleClick={this.props.handleClick} text={'cars'} />
-                <Button handleClick={this.props.handleClick} text={'boats'} />
+                <Button handleClick={this.props.getCars} text={'cars'} />
+                <Button handleClick={this.props.getBoats} text={'boats'} />
             </header>
         )
     }

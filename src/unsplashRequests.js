@@ -16,12 +16,19 @@ export const randomPhoto = async () => {
 }
 
 export const carList = async () => {
-    const response = await fetch(`${BASE_URL}${endPoints.random}?query=car&&count=4`, {
+    const response = await fetch(`${BASE_URL}${endPoints.random}?query=car&&count=3`, {
         headers: {
             Authorization: `Client-ID ${ACCESS_KEY}`,
         }
     })
-    .then(res => res.json())
-    .then(res => res);
-    return response;
+    return response.json();
+}
+
+export const boatList = async () => {
+    const response = await fetch(`${BASE_URL}${endPoints.random}?query=boat&&count=4`, {
+        headers: {
+            Authorization: `Client-ID ${ACCESS_KEY}`,
+        }
+    })
+    return response.json()
 }
